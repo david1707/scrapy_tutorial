@@ -6,7 +6,7 @@ A Scrapy bot that I'm using to scrape 'http://books.toscrape.com/' URL for my tu
 - Creating an environment and installing everything
 - Creating a project
 - Creating a spider
-- Explanation of the Scrapy structure and files
+- A small trick: Scrapy shell
 - How Xpath works and how we fetch the data
 - Manipulating data and yielding the information
 - Running the spider
