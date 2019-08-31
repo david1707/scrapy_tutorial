@@ -8,7 +8,6 @@ class SpiderSpider(scrapy.Spider):
     start_urls = ['http://books.toscrape.com/']
 
     def parse(self, response):
-
         all_books = response.xpath('//article[@class="product_pod"]')
         
         for book in all_books:
@@ -16,7 +15,6 @@ class SpiderSpider(scrapy.Spider):
             price = book.xpath('.//div/p[@class="price_color"]/text()').extract_first()
             image_url = self.start_urls[0] + book.xpath('.//img[@class="thumbnail"]/@src').extract_first()
             book_url = self.start_urls[0] + book.xpath('.//h3/a/@href').extract_first()
-
             yield {
                 'title': title,
                 'price': price,
