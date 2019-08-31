@@ -12,16 +12,31 @@ class SpiderSpider(scrapy.Spider):
         all_books = response.xpath('//article[@class="product_pod"]')
 
         for book in all_books:
-            book_url = self.start_urls[0] + \
-                book.xpath('.//h3/a/@href').extract_first()
+            book_url = book.xpath('.//h3/a/@href').extract_first()
+
+            if 'catalogue/' not in book_url:
+                book_url = 'catalogue/' + book_url
+
+            book_url = self.base_url + book_url
 
             yield scrapy.Request(book_url, callback=self.parse_book)
+
+        next_page_partial_url = response.xpath(
+            '//li[@class="next"]/a/@href').extract_first()
+
+        if next_page_partial_url:
+            if 'catalogue/' not in next_page_partial_url:
+                next_page_partial_url = "catalogue/" + next_page_partial_url
+
+            next_page_url = self.base_url + next_page_partial_url
+            yield scrapy.Request(next_page_url, callback=self.parse)
 
     def parse_book(self, response):
         title = response.xpath('//div/h1/text()').extract_first()
 
-        relative_image = response.xpath('//div[@class="item active"]/img/@src').extract_first()
-        final_image = self.base_url + relative_image.replace('../..', '')
+        relative_image = response.xpath(
+            '//div[@class="item active"]/img/@src').extract_first().replace('../..', '')
+        final_image = self.base_url + relative_image
 
         price = response.xpath(
             '//div[contains(@class, "product_main")]/p[@class="price_color"]/text()').extract_first()
