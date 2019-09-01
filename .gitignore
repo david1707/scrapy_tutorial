@@ -1,0 +1,5 @@
+Pipfile
+
+*.json
+*.csv
+*.xml
