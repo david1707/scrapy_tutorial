@@ -39,8 +39,6 @@ class SpiderSpider(scrapy.Spider):
             '//table[@class="table table-striped"]/tr[4]/td/text()').extract_first()
         tax = response.xpath(
             '//table[@class="table table-striped"]/tr[5]/td/text()').extract_first()
-        number_of_reviews = response.xpath(
-            '//table[@class="table table-striped"]/tr[5]/td/text()').extract_first().replace('\u00a3', '')
 
         yield {
             'Title': title,
@@ -53,5 +51,4 @@ class SpiderSpider(scrapy.Spider):
             'Price after tax': price_excl_tax,
             'Price incl tax': price_inc_tax,
             'Tax': tax,
-            'Number of reviews': number_of_reviews,
         }
