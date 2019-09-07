@@ -1,5 +1,5 @@
 # Scrapy Tutorial
-A Scrapy bot that I'm using to scrape 'http://books.toscrape.com/' URL for my tutorial on http://letslearnabout.net/
+A Scrapy bot that I'm using to scrape 'http://books.toscrape.com/' URL for my tutorial on https://letslearnabout.net/tutorial/scrapy-tutorial/python-scrapy-tutorial-for-beginners-01-creating-your-first-spider/
 
 
 ## First lesson - Your first Scrapy spider | Creating a scrapy spider, fetching and saving the data
