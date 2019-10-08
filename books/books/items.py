@@ -11,7 +11,7 @@ import scrapy
 class BooksItem(scrapy.Item):
     title = scrapy.Field()
     final_image = scrapy.Field()
-    price = scrapy.Field(serializer=float)
+    price = scrapy.Field()
     stock = scrapy.Field()
     stars = scrapy.Field()
     description = scrapy.Field()
