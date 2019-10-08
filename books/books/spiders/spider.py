@@ -2,6 +2,8 @@
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 
+from ..items import BooksItem
+
 import scrapy
 
 
@@ -17,6 +19,9 @@ class SpiderSpider(CrawlSpider):
     def parse_filter_book(self, response):
         exists = response.xpath('//div[@id="product_gallery"]').extract_first()
         if exists:
+
+            book = BooksItem()
+
             title = response.xpath('//div/h1/text()').extract_first()
 
             relative_image = response.xpath(
@@ -40,18 +45,18 @@ class SpiderSpider(CrawlSpider):
             tax = response.xpath(
                 '//table[@class="table table-striped"]/tr[5]/td/text()').extract_first()
 
-            yield {
-                'Title': title,
-                'Image': final_image,
-                'Price': price,
-                'Stock': stock,
-                'Stars': stars,
-                'Description': description,
-                'Upc': upc,
-                'Price after tax': price_excl_tax,
-                'Price incl tax': price_inc_tax,
-                'Tax': tax,
-            }
+            book['title'] = title
+            book['final_image'] = final_image
+            book['price'] = price
+            book['stock'] = stock
+            book['stars'] = stars
+            book['description'] = description
+            book['upc'] = upc
+            book['price_excl_tax'] = price_excl_tax
+            book['price_inc_tax'] = price_inc_tax
+            book['tax'] = tax
+
+            yield book
 
         else:
             print(response.url)

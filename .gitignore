@@ -1,4 +1,5 @@
 Pipfile
+Pipfile.*
 
 *.json
 *.csv

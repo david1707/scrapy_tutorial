@@ -1,8 +1,7 @@
 # Scrapy Tutorial
-A Scrapy bot that I'm using to scrape 'http://books.toscrape.com/' URL for my tutorial on https://letslearnabout.net/tutorial/python-scrapy-tutorial-for-beginners-02-extract-all-the-data/
+A Scrapy bot that I'm using to scrape 'http://books.toscrape.com/' URL for my tutorial on https://letslearnabout.net/tutorial/python-scrapy-tutorial-for-beginners-05
 
 
-## Fourth lesson - Your first Scrapy spider | Using Rule and LinkExtractor
-- Grab ALL the URLs
-- Filter out the ones you don't care about and keep the URLs about books
-- As usual, we extract the data and we yield it to json/csv/xml files
+## Fifth lesson - Your first Scrapy spider | Scrapy items
+- Turns unstructured data into Python dictionaries
+- For that, we use the Item class: We create an Item object that acts as container of the scraped data.
